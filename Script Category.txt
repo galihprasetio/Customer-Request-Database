@@ -1,0 +1,49 @@
+If v = "Other" Then
+			Call thisDoc.ReplaceItemValue("crOther1","Other")
+			Call thisUIDoc.Refresh
+		Elseif v ="Analysis Data" Or v = "Sales Specification" Or v = "ISO" Or v = "RoHS" Or v = "COA"Then 'QA
+			Call thisDoc.ReplaceItemValue("crPICQA",getValueBykey("QA","vRCRI","rcHeadDept")+","+getValueBykey("QA","vRCRI","rcSupervisor"))
+			Call thisDoc.ReplaceItemValue("crOther1","")
+			Call thisUIDoc.Refresh
+		Elseif v="SDS" Or v = "REACH" Or v = "GHS" Or v = "Environment Matter" Then 'Safety and Environment
+			Call thisDoc.ReplaceItemValue("crPICSE",getValueBykey("Safety and Environment","vRCRI","rcHeadDept")+","+getValueBykey("Safety and Environment","vRCRI","rcSupervisor"))
+			Call thisDoc.ReplaceItemValue("crOther1","")			
+			Call thisUIDoc.Refresh
+		Elseif v = "Company Profile" Then 'HRD & PA
+			Call thisDoc.ReplaceItemValue("crPICHR",getValueBykey("HRD & PA","vRCRI","rcHeadDept")+","+getValueBykey("HRD & PA","vRCRI","rcSupervisor"))
+			Call thisDoc.ReplaceItemValue("crOther1","")			
+			Call thisUIDoc.Refresh
+		Elseif v = "Sample" Then 'Distribution
+			Call thisDoc.ReplaceItemValue("crPICDIST",getValueBykey("Distribution","vRCRI","rcHeadDept")+","+getValueBykey("Distribution","vRCRI","rcSupervisor"))
+			Call thisDoc.ReplaceItemValue("crOther1","")			
+			Call thisUIDoc.Refresh
+		Elseif v = "Product Tank Design & Facility" Then 'Technical SAP & Monomer
+			'Call thisDoc.ReplaceItemValue("crPICTechSAP",getValueBykey("Technical SAP","vRCRI","rcHeadDept")+","+getValueBykey("Technical SAP","vRCRI","rcSupervisor"))
+			Call thisDoc.ReplaceItemValue("crPICPTechMonomer",getValueBykey("Technical","vRCRI","rcHeadDept")+","+getValueBykey("Technical","vRCRI","rcSupervisor"))
+			
+			Call thisDoc.ReplaceItemValue("crOther1","")			
+			Call thisUIDoc.Refresh
+			
+		Elseif (v <> "RoHS" And v <> "COA" And v <> "Analysis Data" And v <> "Sales Specification" And v <> "ISO") Then ' QA
+				'Call thisDoc.ReplaceItemValue("crPICQA","")
+		Elseif (v <> "SDS" And v <> "REACH" And v <> "GHS" And v <> "Environment Matter") Then 'SE
+			Call thisDoc.ReplaceItemValue("crPICSE","")
+			Call thisUIDoc.Refresh
+		Elseif (v <> "Company Profile") Then 'HR & PA
+			Call thisDoc.ReplaceItemValue("crPICHR","")
+			Call thisUIDoc.Refresh
+			
+		Elseif (v <> "Sample") Then 'Distribution
+			Call thisDoc.ReplaceItemValue("crPICDIST","")
+			Call thisUIDoc.Refresh
+			
+		Elseif (v <> "Product Tank Design & Facility") Then 'Production Technical
+			Call thisDoc.ReplaceItemValue("crPICTechSAP","")
+			Call thisDoc.ReplaceItemValue("crPICPTechMonomer","")
+			Call thisUIDoc.Refresh
+			
+		Else
+			
+			Call thisDoc.ReplaceItemValue("crOther1","")
+			Call thisUIDoc.Refresh
+		End If
